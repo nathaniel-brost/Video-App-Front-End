@@ -64,6 +64,7 @@ return (
         }}     */}
         <div>
             <CommentSection
+            RegisterForm
             />
         </div>
     </div>
