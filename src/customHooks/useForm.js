@@ -1,10 +1,12 @@
-import {useState} from 'react';
+// import React, { useState } from 'react';
+import { useState } from 'react';
 
 const useForm = (callback) => {
+    const [values, setValues] = useState({});
 
     const handleChange = (event) => {
     event.persist();
-    setFormValues({...event, [event.target.name]:event.target.value});
+    setValues({...values, [event.target.name]:event.target.value});
     }
 
     const handleSubmit = (event) => {
