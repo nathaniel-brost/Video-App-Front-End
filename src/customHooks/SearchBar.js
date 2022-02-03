@@ -1,30 +1,30 @@
 import React from "react";
 import useForm from "./useForm";
 
-const RegisterComment = () => {
+const SearchBar = () => {
     const { values, handleChange, handleSubmit} = useForm(register);
 
     function register (){
-        // alert (`Thank you for posting a comment on the ${values.name} video!`)
+        alert (`Thank you for posting a comment on the ${values.name} video!`)
     }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Comment:
+                    Search Here
                     <input
                         type="comment"
                         name="comment"
                         onChange={handleChange}
-                        value={values.comment}
+                        value={values.search}
                         required={true}
                     />
                 </label>
-                <button type="submit">Post</button>
+                <button type="submit">Search</button>
             </form>
         </div>
     );
 };
 
-export default RegisterComment;
+export default SearchBar;

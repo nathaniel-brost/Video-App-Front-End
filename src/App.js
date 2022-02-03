@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import NavSearch from "./components/NavSearch";
 import CommentSection from "./components/CommentSection";
+import EmbedPlayer from "./components/EmbedPlayer";
+import RegisterComment from "./customHooks/RegisterComment";
 // import videoviewer from "./components/videoviewer";
 // import Details from "./components/Details";
 // import AddVideo from "./components/AddVideo";
@@ -24,7 +26,16 @@ useEffect(() => {
 
 const getAllVideos = async () => {
     try{
-        let response = await axios.get('https://www.googleapis.com/youtube/v3/');
+        let response = await axios.get('https://www.googleapis.com/youtube/v3/videos?id=dip2w_rGzn0&key=AIzaSyB1-ueSNezI16EPmUrOcdiF7ZRBhiE27HE');
+        setVideos(response.data)
+    }catch{
+        console.log("file not found")
+    }
+}
+
+const searchById = async () => {
+    try{
+        let response = await axios.get('https://www.googleapis.com/youtube/v3/videos?id=dip2w_rGzn0&key=AIzaSyB1-ueSNezI16EPmUrOcdiF7ZRBhiE27HE');
         setVideos(response.data)
     }catch{
         console.log("file not found")
@@ -63,8 +74,11 @@ return (
             currentVideo={currentVideo}
         }}     */}
         <div>
-            <CommentSection
-            RegisterForm
+            <EmbedPlayer
+            />
+        </div>
+        <div>
+        <RegisterComment
             />
         </div>
     </div>
