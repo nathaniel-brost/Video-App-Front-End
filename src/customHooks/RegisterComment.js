@@ -1,13 +1,21 @@
 import React from "react";
 import useForm from "./useForm";
+import axios from "axios";
 
 const RegisterComment = () => {
+
+    const register = async () => {
+        await axios
+            .post('http://localhost:5000/api/videos', {
+                videoId: "SAfq55aiqPc",
+                comment: values.comment
+            })
+            
+        
+        }
+
     const { values, handleChange, handleSubmit} = useForm(register);
 
-    function register (){
-        // alert (`Thank you for posting a comment on the ${values.name} video!`)
-        // make a post request here
-    }
 
     return (
         <div>

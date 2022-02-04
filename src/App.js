@@ -75,7 +75,7 @@ return (
             />
         </div>
         <div>
-        <RegisterComment
+        <CommentSection
             />
         </div>
     </div>
