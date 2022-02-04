@@ -5,19 +5,36 @@ import axios from "axios";
 
 function CommentSection(props) {
 
+    const upLikes = async (event) => {
+        const commentId = event.target.name;
+        await axios
+          .put(`http://localhost:5000/api/videos/${commentId}/likes`)
+
+        }
+
+    const upDislikes = async (event) => {
+        const commentId = event.target.name;
+        await axios
+          .put(`http://localhost:5000/api/videos/${commentId}/dislikes`)
+        
+        }
+
+
     const [comments, setComments] = useState([]);
 
     const getAll = async () => {
         await axios
           .get('http://localhost:5000/api/videos/')
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             setComments(res.data);
           });
         }
 
-    // Filter by videoID
-    
+    const commentsByVideo = comments.filter( function(el){
+        return (el.videoId === "SAfq55aiqPc")
+    });
+
 
     useEffect(() => {
         getAll()
@@ -42,7 +59,9 @@ function CommentSection(props) {
             </thead>
             <tbody>
                 <tr>
-                {(comments.length > 0) ? comments.map((comment,i)=> <tr key={i}> <td>{comment.comment}</td><td>{comment.likes}</td>  <td>{comment.dislikes}</td> </tr>    ):null} 
+                {(commentsByVideo.length > 0) ? commentsByVideo.map((comment,i)=> 
+                <tr key={i}> 
+                    <td>{comment.comment}</td><td><a name={comment._id} onClick={upLikes}>Likes:</a>{comment.likes}</td><td><a name={comment._id} onClick={upDislikes}>Dislikes:</a>{comment.dislikes}</td></tr>    ):null} 
 
                 </tr>
 
