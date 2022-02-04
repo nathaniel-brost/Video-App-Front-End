@@ -6,6 +6,7 @@ const RegisterComment = () => {
 
     function register (){
         // alert (`Thank you for posting a comment on the ${values.name} video!`)
+        // make a post request here
     }
 
     return (
